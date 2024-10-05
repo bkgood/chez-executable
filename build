@@ -1,0 +1,5 @@
+#!/usr/bin/env scheme --script
+
+(define output (cadr (command-line)))
+(define inputs (cddr (command-line)))
+(apply make-boot-file output '() inputs)
