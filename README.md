@@ -18,5 +18,5 @@ compile new code at runtime.
 
 Inspired by [gwatt/chez-exe](https://github.com/gwatt/chez-exe), which extracts
 different artifacts into temp files. I wanted to see if I could build
-everything into, and execute everything from (modulo dynamic linking) a single
+everything into, and execute everything from (modulo dynamic linking), a single
 executable.
