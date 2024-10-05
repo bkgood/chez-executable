@@ -14,6 +14,12 @@ The resulting executable is about 2.5 MB on my arm64 Mac.
 Currently only builds in the Petite Chez Scheme boot file, which is unable to
 compile new code at runtime.
 
+## License of output
+
+Note that the output includes both boot files and object code from Chez Scheme
+and any resulting distributables thus need to abide by the terms under which
+they are distributed.
+
 ## Prior art
 
 Inspired by [gwatt/chez-exe](https://github.com/gwatt/chez-exe), which extracts
