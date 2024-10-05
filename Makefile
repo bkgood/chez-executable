@@ -1,7 +1,15 @@
 .PHONY: default
 default: hello
 
-CHEZ_PATH ?= $(shell readlink -f $$(command -v chez))
+ifdef SCHEME
+ifeq ($(shell command -v $(SCHEME)),)
+$(error SCHEME=$(SCHEME) does not exist)
+endif
+else
+SCHEME := $(or $(shell command -v scheme),$(shell command -v chez),$(error can't find a SCHEME))
+endif
+
+CHEZ_PATH ?= $(shell readlink -f $(SCHEME))
 CHEZ_LIB_PATH ?= $(shell dirname $(CHEZ_PATH))
 
 XXD ?= xxd
