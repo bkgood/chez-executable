@@ -9,7 +9,7 @@
     (lambda (_) ; should be more sensitive; alas this arg parsing is already lackluster.
       (display (current-error-port) "usage: input symbol-name output")
       (exit 1))
-    (lambda () (values (car args) (cadr args) (caddr args)))))
+    (thunk (values (car args) (cadr args) (caddr args)))))
 
 (define-values (infile name outfile) (parse-opts (cdr (command-line))))
 
