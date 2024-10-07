@@ -18,7 +18,7 @@
 (define (format-hex-byte x)
   (string-downcase
     (if (= 1 (string-length x))
-      (string-append "0" (substring x 0 1))
+      (string-append "0" x)
       x)))
 
 (define (process from into)
