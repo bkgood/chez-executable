@@ -12,8 +12,6 @@ endif
 CHEZ_PATH := $(shell readlink -f $(SCHEME))
 CHEZ_LIB_PATH := $(shell dirname $(CHEZ_PATH))
 
-XXD ?= xxd
-
 CFLAGS = -std=c17 -Wall -Wextra -I$(CHEZ_LIB_PATH)
 LDLIBS = -liconv -lncurses -lkernel -lz -llz4
 LDFLAGS = -L$(CHEZ_LIB_PATH)
@@ -23,7 +21,7 @@ hello.boot: $(CHEZ_LIB_PATH)/petite.boot *.ss
 	$(CHEZ_PATH) --script ./build $@ $?
 
 boot.h: hello.boot
-	$(XXD) -include -name bootfile $< $@
+	$(SCHEME) --script util/dump-to-header.ss $< bootfile $@
 
 hello: main.c boot.h
 	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LDLIBS) $<
