@@ -16,8 +16,11 @@ CFLAGS = -std=c17 -Wall -Wextra -I$(CHEZ_LIB_PATH)
 LDLIBS = -lncurses -lkernel -lz -llz4
 LDFLAGS = -L$(CHEZ_LIB_PATH)
 
-ifeq ($(shell uname -s),Darwin)
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
 LDLIBS += -liconv
+else ifeq ($(UNAME_S),Linux)
+LDLIBS += -lm
 endif
 
 # petite has to be first or we get "S_G.base-rtd has not been set".
