@@ -13,8 +13,12 @@ CHEZ_PATH := $(shell readlink -f $(SCHEME))
 CHEZ_LIB_PATH := $(shell dirname $(CHEZ_PATH))
 
 CFLAGS = -std=c17 -Wall -Wextra -I$(CHEZ_LIB_PATH)
-LDLIBS = -liconv -lncurses -lkernel -lz -llz4
+LDLIBS = -lncurses -lkernel -lz -llz4
 LDFLAGS = -L$(CHEZ_LIB_PATH)
+
+ifeq ($(shell uname -s),Darwin)
+LDLIBS += -liconv
+endif
 
 # petite has to be first or we get "S_G.base-rtd has not been set".
 hello.boot: $(CHEZ_LIB_PATH)/petite.boot *.ss
