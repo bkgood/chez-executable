@@ -31,7 +31,7 @@ boot.h: hello.boot
 	$(SCHEME) --script util/dump-to-header.ss $< bootfile $@
 
 hello: main.c boot.h
-	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LDLIBS) $<
+	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $< $(LDLIBS)
 
 .PHONY: clean
 clean:
